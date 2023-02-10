@@ -1,6 +1,23 @@
-/* HTML Elements */
-libraryTable = document.querySelector(".library-table")
+/* Variables */
+var myLibrary = [];
 
+/* HTML Elements */
+const libraryTable = document.querySelector(".library-table");
+
+const addButton = document.querySelector(".add-button");
+addButton.addEventListener("click", BookForm)
+
+const bookForm = document.querySelector(".book-form")
+
+const overlay = document.querySelector(".overlay")
+
+const submitBookFormButton = document.querySelector(".submit-book-form")
+submitBookFormButton.addEventListener("click", saveFormValues)
+
+
+
+
+/* Methods */
 class Book {
   constructor(name, author, pages) {
     this.name = name;
@@ -13,20 +30,20 @@ class Book {
   }
 }
 
-myLibrary = [];
 
-harryPotter = new Book("Harry Potter", "J.K Rowling", 700);
-harryPotter.addBookToLibrary();
-lordOfTheRings = new Book("Lord of The Rings", "J.R.R Tolkein", 700);
-lordOfTheRings.addBookToLibrary();
-peakMind = new Book("Peak Mind", "Amishi Jha", 300);
-peakMind.addBookToLibrary();
 
+
+
+/* Functions */
+function RenderBooks() {
+  libraryTable.innerText = ""
+  let i = 0;
 myLibrary.forEach(book => {
   divElement = document.createElement("div")
   divElement.classList = "book"
 
   pNameElement = document.createElement("p")
+  pNameElement.classList = "book-title"
   pNameElement.innerText = `"${book.name}"`
   divElement.appendChild(pNameElement)
 
@@ -38,6 +55,31 @@ myLibrary.forEach(book => {
   pPagesElement.innerText = `${book.pages} pages`
   divElement.appendChild(pPagesElement)
 
-  libraryTable.appendChild(divElement)
-});
+  removeButtonElement = document.createElement("button")
+  removeButtonElement.classList = "remove-book-button"
+  removeButtonElement.innerText = "Remove"
+  divElement.appendChild(removeButtonElement)
 
+  libraryTable.appendChild(divElement)
+
+
+});
+}
+
+function BookForm() {
+  overlay.classList = "overlay overlay-active"
+  bookForm.classList = "book-form book-form-active"
+}
+
+function saveFormValues() {
+  bookTitle = document.querySelector("#book-title").value
+  bookAuthor = document.querySelector("#book-author").value
+  bookPages = document.querySelector("#book-pages").value
+
+  new Book(`${bookTitle}`, `${bookAuthor}`, `${bookPages}`).addBookToLibrary();
+  console.log(myLibrary)
+  event.preventDefault()
+  overlay.classList = "overlay overlay-inactive"
+  bookForm.classList = "book-form book-form-inactive"
+  RenderBooks()
+}

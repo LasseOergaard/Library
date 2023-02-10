@@ -8,6 +8,7 @@
   <link rel="stylesheet" href="styles/bookTable.css">
   <link rel="stylesheet" href="styles/general.css">
   <link rel="stylesheet" href="styles/header.css">
+  <link rel="stylesheet" href="styles/footer.css">
 </head>
 <body>
   <div class="header">
@@ -16,7 +17,7 @@
     </div>
 
     <div class="add-button-div">
-      <button>
+      <button class="add-button">
         + Add Book
       </button>
     </div>
@@ -26,6 +27,16 @@
   </div>
 
   <div class="library-table"></div>
+
+
+  <div class="overlay overlay-inactive"></div>
+  <form class="book-form book-form-inactive">
+    <legend>Add New Book</legend>
+    <input type="text" name="book-title" id="book-title" placeholder="Title">
+    <input type="text" name="book-author" id="book-author" placeholder="Author">
+    <input type="number" name="book-pages" id="book-pages" placeholder="Pages">
+   <button class="submit-book-form">Submit</button>
+  </form>
 
 
   
