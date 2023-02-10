@@ -16,6 +16,9 @@ const overlay = document.querySelector(".overlay");
 const submitBookFormButton = document.querySelector(".submit-book-form");
 submitBookFormButton.addEventListener("click", saveFormValues);
 
+
+
+
 /* Methods */
 class Book {
   constructor(name, author, pages, id) {
@@ -56,6 +59,13 @@ function RenderBooks() {
     removeButtonElement.innerText = "Remove";
     removeButtonElement.addEventListener("click", removeBook);
     divElement.appendChild(removeButtonElement);
+
+    readButtonElement = document.createElement("button");
+    readButtonElement.classList = "read-button read-button-red"
+    readButtonElement.innerText = "Not Read"
+    readButtonElement.addEventListener("click", ChangeRead)
+    divElement.appendChild(readButtonElement)
+
     libraryTable.appendChild(divElement);
   });
 
@@ -104,4 +114,14 @@ function removeBook() {
     removeObjectWithId(myLibrary, classToRemove);
     RenderBooks();
   });
+}
+
+function ChangeRead() {
+  event.target.classList.toggle("read-button-red") 
+  event.target.classList.toggle("read-button-green") 
+  if (event.target.innerText == "Not Read") {
+    event.target.innerText = "Read"
+  } else if (event.target.innerText == "Read") {
+    event.target.innerText = "Not Read"
+  }
 }

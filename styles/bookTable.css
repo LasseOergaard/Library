@@ -8,7 +8,7 @@
 
 .library-table {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px,1fr));
+  grid-template-columns: repeat(auto-fit, minmax(400px,1fr));
   gap: 16px;
   margin: 16px 32px 32px 32px;
 }
@@ -37,6 +37,7 @@
   padding: 6px 20px;
   cursor: pointer;
   transition: all 0.15s;
+  margin-right: 16px;
 }
 
 .remove-book-button:hover {
@@ -94,8 +95,24 @@
   background-color: var(--color-stone-900);
 }
 
+@keyframes append-animate {
+  from {
+    opacity: 0;
+
+  }
+  to {
+    opacity: 1;
+    
+  }
+}
+
+.book-form-active {
+  animation: append-animate 0.2s linear;
+}
+
 
 .overlay-active {
+  animation: append-animate 0.2s linear;
   background-color: rgba(0, 0, 0, 0.5);
   position: fixed;
   top: 0;
@@ -107,9 +124,42 @@
 }
 
 
-.book-form-inactive {display: none;}
-.overlay-inactive {display:none;}
-.book-form-inactive input {display: none;}
-.book-form-inactive button {display: none;}
-.book-form-inactive legend {display: none;}
+.book-form-inactive {
+ display: none;
+}
+.overlay-inactive {
+  display:none; 
+}
+
+.read-button-red {
+  background: var(--color-red-700);
+  border: 2px solid var(--color-red-700);
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-size: 18px;
+  border-radius: 4px;
+  color: var(--color-sky-50);
+  font-weight: 500;
+  padding: 6px;
+  width: 120px;
+  cursor: pointer;
+  transition: all 0.15s;
+  margin-left: 16px;
+}
+
+.read-button-green {
+  background: var(--color-green-700);
+  border: 2px solid var(--color-green-700);
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-size: 18px;
+  border-radius: 4px;
+  color: var(--color-sky-50);
+  font-weight: 500;
+  padding: 6px;
+  width: 120px;
+  cursor: pointer;
+  transition: all 0.15s;
+  margin-left: 16px;
+}
+
+
 
