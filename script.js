@@ -16,6 +16,16 @@ const overlay = document.querySelector(".overlay");
 const submitBookFormButton = document.querySelector(".submit-book-form");
 submitBookFormButton.addEventListener("click", saveFormValues);
 
+document.addEventListener("keydown", () => {
+  if (event.which == 27) {
+    if (overlay.classList.contains("overlay-active")) {
+      overlay.classList = "overlay overlay-inactive"
+      bookForm.classList = "book-form book-form-inactive";
+    }
+  }
+  else if (event.which == 13) {saveFormValues()}
+})
+
 
 
 
